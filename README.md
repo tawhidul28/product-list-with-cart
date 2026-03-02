@@ -54,6 +54,10 @@ This project was created to practice:
 
 🔹Responsive Layout Design
 
+🌍 Live Demo
+If deployed, add your live link here:
+https://tawhidul28.github.io/product-list-with-cart/
+
 🧑‍💻 Author
 Tawhidul Islam
 
