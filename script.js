@@ -80,9 +80,7 @@ function upDateCart() {
   totalItem = 0;
   totalPrice = 0;
   for (let item in cart) {
-    console.log(item);
-    console.log(cart[item].price, cart[item].quantity);
-
+    
     let line = document.createElement("div");
     line.setAttribute("class", "line");
     let div = document.createElement("div");
@@ -108,10 +106,10 @@ function upDateCart() {
     deleteBtn.addEventListener("click", () => {
       delete cart[item];
       upDateCart();
-      console.log(item);
+      
       document.querySelectorAll(".item").forEach((i) => {
         if (i.lastElementChild.children[1].innerText == item) {
-          console.log("del");
+          
           i.firstElementChild.lastElementChild.style.display = "none";
           i.firstElementChild.children[1].style.display = "flex";
         }
@@ -131,11 +129,10 @@ function upDateCart() {
     emptyPlaceholder.style.display = "flex";
   }
 }
+const overlay = document.getElementById("overlay");
 
 confirmBtn.addEventListener("click", () => {
-  console.log("click");
   confirmModelUpdate();
-  const overlay = document.getElementById("overlay");
   overlay.style.display = "flex";
 });
 
@@ -168,5 +165,21 @@ function confirmModelUpdate() {
 
 const stNewOrder = document.getElementById("stNewOrder");
 stNewOrder.addEventListener("click", () => {
-  location.reload();
+  // location.reload();
+  overlay.style.display = "none";
+  confirmationModal.style.display = "none";
+  
+  for (let key in cart) {
+  delete cart[key];
+}
+  upDateCart()
+  document.querySelectorAll(".click").forEach(i=>
+    i.style.display = "none"
+  )
+  document.querySelectorAll(".button").forEach(i=>
+    i.style.display = "flex"
+  )
+
+  document.querySelectorAll(".confirmItems div:not(:last-child)").forEach(e => e.remove());
+
 });
